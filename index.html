@@ -12,9 +12,29 @@
         <h1>Etch-a-Sketch</h1>
     </header>
     <main class="main">
+        <div class="settings">
+            <div class="grid-size">
+                <p>16 x 16</p>
+                <input class ="" type="range" value="16" min="8" max="128">
+            </div>
+            <div class="extraOptions">
+                <button class="eraserBtn">Eraser</button>
+                <button class="hoverRandomEffect">Hover Effect</button>
+            </div>
+        </div>
+
         <div id="container"></div>
+
+        <div class="colorOptions">
+            <button class="blackBtn">Black</button>
+            <button class="rainbowBtn">Random Colors</button>
+            <button class="randomWarmColors">Random Warm Colors</button>
+            <button class="randomColdColors">Random Cold Colors</button>
+        </div>
     </main>
-    <footer class="footer"></footer>
+    <footer class="footer">
+        <p>Created by </p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
