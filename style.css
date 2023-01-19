@@ -14,11 +14,32 @@ body{
     overflow: hidden;
 }
 
+.main{
+    /* max-height: 500px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.colorOptions{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.extraOptions{
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 #container{
     max-width: 500px;
     display: grid;    
-    grid-template-rows: repeat(16, auto);
-    grid-template-columns: repeat(16, auto);
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(16, 1fr);
 }
 
 .square{
