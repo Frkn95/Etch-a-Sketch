@@ -1,32 +1,45 @@
 const container = document.getElementById("container")
-const rainbowBtn = document.querySelector(".rainbowBtn")
-const blackBtn = document.querySelector(".blackBtn")
-const randomWarmColors = document.querySelector(".randomWarmColors")
-const randomColdColors = document.querySelector(".randomColdColors")
+const smallBtn = document.querySelector(".smallBtn");
+const mediumBtn = document.querySelector(".mediumBtn")
+const largeBtn = document.querySelector(".largeBtn")
+const xLargeBtn = document.querySelector(".xLargeBtn")
 
-function makeGrid(rows,cols){
-    for (let i = 0; i < (rows * cols); i++) {
-      let square = document.createElement("div")
-      container.appendChild(square) 
-      square.className = "square"
-    }
+let paintOnGrid = false
+document.body.addEventListener("onmousedown",() => paintOnGrid = true)
+document.body.addEventListener("onmouseup",() => paintOnGrid = false)
+
+function makeGrid(rowsCols){
+  container.style.gridTemplateColumns = `repeat(${rowsCols}, 1fr)`
+  container.style.gridTemplateRows = `repeat(${rowsCols}, 1fr)`
+
+  for (let i = 0; i < (rowsCols * rowsCols); i++) {
+  let square = document.createElement("div")
+  square.className = "square"
+  container.appendChild(square) 
+  }
 }
 
-function getRandomColor(){
-  const randomHue = Math.floor(Math.random() * 360)
-  const randomColor = `hsl(${randomHue},100%,50%)`
-  return randomColor
+function reloadGrid(prefVal){
+  container.innerHTML =""
+  makeGrid(prefVal)
 }
 
-makeGrid(16,16)
+smallBtn.addEventListener("click", (prefVal) => {
+  prefVal = 8
+  reloadGrid(prefVal)
+})
+mediumBtn.addEventListener("click", (prefVal) => {
+  prefVal = 16
+  reloadGrid(prefVal)
+})
+largeBtn.addEventListener("click", (prefVal) => {
+  prefVal = 32
+  reloadGrid(prefVal)
+})
+xLargeBtn.addEventListener("click", (prefVal) => {
+  prefVal = 64
+})
 
-// const square = document.querySelector(".square")
-
-// square.addEventListener("mouseover", () => setColor(square))
-
-// function setColor(element){
-//   const color = getRandomColor()
-//   element.style.background = color;
-//   element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`
-// }
-
+window.onload = () => {
+  makeGrid(16)
+}
